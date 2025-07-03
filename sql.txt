@@ -1,0 +1,60 @@
+CREATE DATABASE IF NOT EXISTS blood_donation;
+USE blood_donation;
+
+-- Client Requests Table
+CREATE TABLE client_request (
+    patient_id INT(4) PRIMARY KEY,
+    name VARCHAR(30),
+    age INT(2),
+    address VARCHAR(50),
+    gender VARCHAR(8),
+    weight DECIMAL(5,2),
+    guardian_name VARCHAR(30),
+    hospital_name VARCHAR(30),
+    doctor_incharge VARCHAR(30),
+    blood_group VARCHAR(25),
+    disease VARCHAR(30),
+    disease_history VARCHAR(50),
+    mobile VARCHAR(13),
+    quantity INT(10)
+);
+
+-- Donor Table
+CREATE TABLE donor (
+    donor_id INT(4) PRIMARY KEY,
+    name VARCHAR(30),
+    age INT(2),
+    address VARCHAR(80),
+    gender VARCHAR(30),
+    mobile VARCHAR(13),
+    email VARCHAR(30),
+    occupation VARCHAR(30),
+    blood_group VARCHAR(25),
+    disease_history VARCHAR(50),
+    donation_date DATE
+);
+
+-- Donor Health Table
+CREATE TABLE donor_health (
+    donor_id INT(4),
+    height DECIMAL(5,2),
+    weight DECIMAL(5,2),
+    haemoglobin DECIMAL(3,1),
+    gender VARCHAR(7),
+    bp_status VARCHAR(20)
+);
+
+-- Blood Stock Table
+CREATE TABLE blood_stock (
+    donor_id INT(4),
+    bag_id INT(5) PRIMARY KEY,
+    transfusion_date DATE,
+    blood_group VARCHAR(25)
+);
+
+-- Issue Table
+CREATE TABLE issue (
+    bag_id INT(5),
+    p_id INT(4),
+    p_name VARCHAR(30)
+);
